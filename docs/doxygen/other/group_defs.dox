@@ -1,0 +1,7 @@
+/*!
+ * \defgroup block GNU Radio SCOPY C++ Signal Processing Blocks
+ * \brief All C++ blocks that can be used from the SCOPY GNU Radio
+ *        module are listed here or in the subcategories below.
+ *
+ */
+
