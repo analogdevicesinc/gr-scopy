@@ -23,7 +23,7 @@
 #ifndef INCLUDED_SCOPY_POWER_FF_IMPL_H
 #define INCLUDED_SCOPY_POWER_FF_IMPL_H
 
-#include <gnuradio/scopy/power_ff.h>
+#include <scopy/power_ff.h>
 
 namespace gr {
 	namespace scopy {

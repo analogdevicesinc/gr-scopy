@@ -23,7 +23,7 @@
 #ifndef INCLUDED_GR_SCOPY_MODULO_FF_H
 #define INCLUDED_GR_SCOPY_MODULO_FF_H
 
-#include <gnuradio/scopy/api.h>
+#include <scopy/api.h>
 #include <gnuradio/sync_block.h>
 
 namespace gr {

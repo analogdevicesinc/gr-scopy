@@ -27,18 +27,18 @@
 
 #include <boost/lexical_cast.hpp>
 
-#include <gnuradio/analog/sig_source_f.h>
+#include <gnuradio/analog/sig_source.h>
 #include <gnuradio/analog/sig_source_waveform.h>
-#include <gnuradio/blocks/add_ff.h>
+#include <gnuradio/blocks/add_blk.h>
 #include <gnuradio/blocks/copy.h>
-#include <gnuradio/blocks/divide_ff.h>
-#include <gnuradio/blocks/multiply_const_ff.h>
-#include <gnuradio/blocks/multiply_ff.h>
+#include <gnuradio/blocks/divide.h>
+#include <gnuradio/blocks/multiply_const.h>
+#include <gnuradio/blocks/multiply.h>
 #include <gnuradio/blocks/null_sink.h>
-#include <gnuradio/blocks/sub_ff.h>
+#include <gnuradio/blocks/sub.h>
 #include <gnuradio/blocks/transcendental.h>
-#include <gnuradio/scopy/modulo_ff.h>
-#include <gnuradio/scopy/power_ff.h>
+#include <scopy/modulo_ff.h>
+#include <scopy/power_ff.h>
 #include <gnuradio/io_signature.h>
 
 using namespace gr;
@@ -170,7 +170,7 @@ void * const_block(void *pdata, double value)
 	iio_math_impl *m = (iio_math_impl *) pdata;
 	struct iio_math_impl::block *block = new iio_math_impl::block;
 
-	block->sptr = analog::sig_source_f::make(0,
+	block->sptr = analog::sig_source<float>::make(0,
 			analog::GR_CONST_WAVE, 0, 0, (float) value);
 	m->register_block(block);
 	return block;

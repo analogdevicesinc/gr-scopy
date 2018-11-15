@@ -28,7 +28,7 @@
 
 #include "iio_math_impl.h"
 
-#include <gnuradio/analog/sig_source_f.h>
+#include <gnuradio/analog/sig_source.h>
 #include <gnuradio/analog/sig_source_waveform.h>
 #include <gnuradio/io_signature.h>
 
@@ -47,7 +47,7 @@ iio_math_gen_impl::iio_math_gen_impl(double sampling_freq, double wav_freq,
 		io_signature::make(0, 0, 0),
 		io_signature::make(1, 1, sizeof(float)))
 {
-	src_block = analog::sig_source_f::make(sampling_freq / wav_freq,
+	src_block = analog::sig_source<float>::make(sampling_freq / wav_freq,
 			analog::GR_SAW_WAVE, 1, 2.0 * M_PI, -M_PI);
 
 	int ret = parse_function(function);

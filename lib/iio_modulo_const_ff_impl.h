@@ -23,7 +23,7 @@
 #ifndef INCLUDED_SCOPY_MODULO_CONST_FF_IMPL_H
 #define INCLUDED_SCOPY_MODULO_CONST_FF_IMPL_H
 
-#include <gnuradio/scopy/modulo_const_ff.h>
+#include <scopy/modulo_const_ff.h>
 
 namespace gr {
 	namespace scopy {

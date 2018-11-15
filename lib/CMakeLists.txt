@@ -41,9 +41,11 @@ list(APPEND scopy_sources
 	iio_math_gen_impl.cc
 	iio_power_ff_impl.cc
 	iio_modulo_ff_impl.cc
-	iio_modulo_const_ff_impl.cc
+        iio_modulo_const_ff_impl.cc
+        goertzel_scopy_fc_impl.cc
+        goertzel_scopy.cc
 	${FLEX_lexer_OUTPUTS}
-	${BISON_parser_OUTPUTS}
+	${BISON_parser_OUTPUTS}    
 )
 
 set(scopy_sources "${scopy_sources}" PARENT_SCOPE)
@@ -53,48 +55,37 @@ if(NOT scopy_sources)
 endif(NOT scopy_sources)
 
 add_library(gnuradio-scopy SHARED ${scopy_sources})
-target_link_libraries(gnuradio-scopy ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
-set_target_properties(gnuradio-scopy PROPERTIES DEFINE_SYMBOL "gnuradio_scopy_EXPORTS")
+target_link_libraries(gnuradio-scopy ${Boost_LIBRARIES} 
+	gnuradio::gnuradio-runtime
+        gnuradio::gnuradio-blocks
+        gnuradio::gnuradio-analog
+        gnuradio::gnuradio-pmt
+        gnuradio::gnuradio-filter
+        gnuradio::gnuradio-fft)
+
+target_include_directories(gnuradio-scopy
+    PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
+    PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/>
+    PUBLIC $<INSTALL_INTERFACE:include>
+  )
+
+set_target_properties(gnuradio-scopy PROPERTIES
+	VERSION ${GR_SCOPY_VERSION}
+	SOVERSION ${GR_SCOPY_VERSION_MAJOR}
+        DEFINE_SYMBOL "gnuradio_scopy_EXPORTS"
+)
 
 if(APPLE)
-    set_target_properties(gnuradio-scopy PROPERTIES
+	set_target_properties(gnuradio-scopy PROPERTIES
         INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/lib"
     )
 endif(APPLE)
+
 
 ########################################################################
 # Install built library files
 ########################################################################
 include(GrMiscUtils)
-GR_LIBRARY_FOO(gnuradio-scopy RUNTIME_COMPONENT "scopy_runtime" DEVEL_COMPONENT "scopy_devel")
+GR_LIBRARY_FOO(gnuradio-scopy)
 
-########################################################################
-# Build and register unit test
-########################################################################
-include(GrTest)
-
-include_directories(${CPPUNIT_INCLUDE_DIRS})
-
-list(APPEND test_scopy_sources
-    ${CMAKE_CURRENT_SOURCE_DIR}/test_scopy.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/qa_scopy.cc
-)
-
-add_executable(test-scopy ${test_scopy_sources})
-
-target_link_libraries(
-  test-scopy
-  ${GNURADIO_RUNTIME_LIBRARIES}
-  ${Boost_LIBRARIES}
-  ${CPPUNIT_LIBRARIES}
-  gnuradio-scopy
-)
-
-GR_ADD_TEST(test_scopy test-scopy)
-
-########################################################################
-# Print summary
-########################################################################
-message(STATUS "Using install prefix: ${CMAKE_INSTALL_PREFIX}")
-message(STATUS "Building for version: ${VERSION} / ${LIBVER}")
 

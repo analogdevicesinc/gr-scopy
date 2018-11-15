@@ -25,7 +25,7 @@
 #include <vector>
 
 #include <gnuradio/basic_block.h>
-#include <gnuradio/scopy/math.h>
+#include <scopy/math.h>
 
 extern "C" {
 #include "parser.h"

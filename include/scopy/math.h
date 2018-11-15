@@ -23,7 +23,7 @@
 #ifndef INCLUDED_SCOPY_MATH_H
 #define INCLUDED_SCOPY_MATH_H
 
-#include <gnuradio/scopy/api.h>
+#include <scopy/api.h>
 #include <gnuradio/hier_block2.h>
 
 namespace gr {
