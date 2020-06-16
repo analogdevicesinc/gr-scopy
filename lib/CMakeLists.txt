@@ -69,12 +69,6 @@ target_include_directories(gnuradio-scopy
     PUBLIC $<INSTALL_INTERFACE:include>
   )
 
-set_target_properties(gnuradio-scopy PROPERTIES
-	VERSION ${GR_SCOPY_VERSION}
-	SOVERSION ${GR_SCOPY_VERSION_MAJOR}
-        DEFINE_SYMBOL "gnuradio_scopy_EXPORTS"
-)
-
 if(APPLE)
 	set_target_properties(gnuradio-scopy PROPERTIES
         INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/lib"
@@ -88,4 +82,8 @@ endif(APPLE)
 include(GrMiscUtils)
 GR_LIBRARY_FOO(gnuradio-scopy)
 
-
+set_target_properties(gnuradio-scopy PROPERTIES
+	VERSION ${GR_SCOPY_VERSION}
+	SOVERSION ${GR_SCOPY_VERSION_MAJOR}
+	DEFINE_SYMBOL "gnuradio_scopy_EXPORTS"
+)
