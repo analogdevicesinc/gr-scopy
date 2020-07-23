@@ -45,7 +45,8 @@ list(APPEND scopy_sources
         goertzel_scopy_fc_impl.cc
         goertzel_scopy.cc
 	${FLEX_lexer_OUTPUTS}
-	${BISON_parser_OUTPUTS}    
+	${BISON_parser_OUTPUTS}
+    t_source_impl.cc
 )
 
 set(scopy_sources "${scopy_sources}" PARENT_SCOPE)

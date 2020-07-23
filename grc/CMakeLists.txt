@@ -19,5 +19,6 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    scopy_goertzel_scopy_fc.block.yml DESTINATION share/gnuradio/grc/blocks
+    scopy_goertzel_scopy_fc.block.yml
+    scopy_t_source.block.yml DESTINATION share/gnuradio/grc/blocks
 )

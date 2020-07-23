@@ -24,5 +24,6 @@
 install(FILES
     api.h trapezoidal.h
     math.h power_ff.h modulo_ff.h modulo_const_ff.h
-    goertzel_scopy_fc.h goertzel_scopy.h DESTINATION ${GR_INCLUDE_DIR}
+    goertzel_scopy_fc.h goertzel_scopy.h
+    t_source.h DESTINATION ${GR_INCLUDE_DIR}
 )

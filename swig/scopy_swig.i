@@ -9,6 +9,7 @@
 #include "scopy/modulo_ff.h"
 #include "scopy/modulo_const_ff.h"
 #include "scopy/goertzel_scopy_fc.h"
+#include "scopy/t_source.h"
 %}
 
 //load generated python docstrings
@@ -27,3 +28,5 @@ GR_SWIG_BLOCK_MAGIC2(scopy, modulo_const_ff);
 
 %include "scopy/goertzel_scopy_fc.h"
 GR_SWIG_BLOCK_MAGIC2(scopy, goertzel_scopy_fc);
+%include "scopy/t_source.h"
+GR_SWIG_BLOCK_MAGIC2(scopy, t_source);
