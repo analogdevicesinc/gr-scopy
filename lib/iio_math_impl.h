@@ -67,7 +67,7 @@ namespace gr {
 					  public iio_math_gen
 		{
 		public:
-			iio_math_gen_impl(double sampling_freq, double wav_freq,
+			iio_math_gen_impl(double sampling_freq,
 					const std::string &function);
 
 			virtual gr::basic_block_sptr get_src_block();

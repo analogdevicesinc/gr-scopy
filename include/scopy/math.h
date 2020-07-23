@@ -42,7 +42,7 @@ namespace gr {
 		public:
 			typedef boost::shared_ptr<iio_math_gen> sptr;
 
-			static sptr make(double sampling_freq, double wav_freq,
+			static sptr make(double sampling_freq,
 					const std::string &function);
 		};
 	}

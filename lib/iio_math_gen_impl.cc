@@ -27,6 +27,7 @@
 #include <cmath>
 
 #include "iio_math_impl.h"
+#include "t_source_impl.h"
 
 #include <gnuradio/analog/sig_source.h>
 #include <gnuradio/analog/sig_source_waveform.h>
@@ -35,20 +36,19 @@
 using namespace gr;
 using namespace gr::scopy;
 
-iio_math_gen::sptr iio_math_gen::make(double sampling_freq, double wav_freq,
+
+iio_math_gen::sptr iio_math_gen::make(double sampling_freq,
 		const std::string &function)
 {
 	return gnuradio::get_initial_sptr(new iio_math_gen_impl(
-				sampling_freq, wav_freq, function));
+				sampling_freq, function));
 }
 
-iio_math_gen_impl::iio_math_gen_impl(double sampling_freq, double wav_freq,
-		const std::string &function) : hier_block2("math_gen",
+iio_math_gen_impl::iio_math_gen_impl(double sampling_freq, const std::string &function) : hier_block2("math_gen",
 		io_signature::make(0, 0, 0),
 		io_signature::make(1, 1, sizeof(float)))
 {
-	src_block = analog::sig_source<float>::make(sampling_freq / wav_freq,
-			analog::GR_SAW_WAVE, 1, 2.0 * M_PI, -M_PI);
+	src_block = t_source::make(sampling_freq);
 
 	int ret = parse_function(function);
 	if (ret)
