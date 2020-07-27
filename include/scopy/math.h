@@ -43,7 +43,8 @@ namespace gr {
 			typedef boost::shared_ptr<iio_math_gen> sptr;
 
 			static sptr make(double sampling_freq,
-					const std::string &function);
+					const std::string &function,
+					uint64_t period_in_samples = 0);
 		};
 	}
 }

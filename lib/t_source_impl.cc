@@ -686,21 +686,22 @@ namespace gr {
   namespace scopy {
 
     t_source::sptr
-    t_source::make(double samp_rate)
+    t_source::make(double samp_rate, uint64_t period_in_samples)
     {
       return gnuradio::get_initial_sptr
-        (new t_source_impl(samp_rate));
+        (new t_source_impl(samp_rate, period_in_samples));
     }
 
 
     /*
      * The private constructor
      */
-    t_source_impl::t_source_impl(double samp_rate)
+    t_source_impl::t_source_impl(double samp_rate, uint64_t period_in_samples)
       : gr::sync_block("t_source",
               gr::io_signature::make(0, 0, 0),
               gr::io_signature::make(1, 1, sizeof(float))),
 	      samp_rate(samp_rate),
+	      period(period_in_samples),
 	      step(0)
     {}
 
@@ -722,6 +723,9 @@ namespace gr {
 	      float val = step / samp_rate;
 	      out[i] = val;
 	      step++;
+	      if(period != 0 && step > period) {
+		      step = 0;
+	      }
       }
 
 

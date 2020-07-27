@@ -68,7 +68,8 @@ namespace gr {
 		{
 		public:
 			iio_math_gen_impl(double sampling_freq,
-					const std::string &function);
+					const std::string &function,
+					uint64_t period_in_samples = 0);
 
 			virtual gr::basic_block_sptr get_src_block();
 			virtual void connect_to_output(gr::basic_block_sptr block, unsigned int port = 0);

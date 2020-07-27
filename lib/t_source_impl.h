@@ -689,9 +689,10 @@ namespace gr {
       // Nothing to declare in this block.
       double samp_rate;
       uint64_t step;
+      uint64_t period;
 
      public:
-      t_source_impl(double samp_rate);
+      t_source_impl(double samp_rate, uint64_t period_in_samples = 0);
       ~t_source_impl();
 
       // Where all the action really happens

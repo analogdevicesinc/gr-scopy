@@ -702,7 +702,7 @@ namespace gr {
        * class. scopy::t_source::make is the public interface for
        * creating new instances.
        */
-      static sptr make(double samp_rate);
+      static sptr make(double samp_rate, uint64_t period_in_samples = 0);
     };
 
   } // namespace scopy

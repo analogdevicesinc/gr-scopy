@@ -38,17 +38,17 @@ using namespace gr::scopy;
 
 
 iio_math_gen::sptr iio_math_gen::make(double sampling_freq,
-		const std::string &function)
+		const std::string &function, uint64_t period_in_samples)
 {
 	return gnuradio::get_initial_sptr(new iio_math_gen_impl(
-				sampling_freq, function));
+				sampling_freq, function, period_in_samples));
 }
 
-iio_math_gen_impl::iio_math_gen_impl(double sampling_freq, const std::string &function) : hier_block2("math_gen",
+iio_math_gen_impl::iio_math_gen_impl(double sampling_freq, const std::string &function, uint64_t period_in_samples) : hier_block2("math_gen",
 		io_signature::make(0, 0, 0),
 		io_signature::make(1, 1, sizeof(float)))
 {
-	src_block = t_source::make(sampling_freq);
+	src_block = t_source::make(sampling_freq, period_in_samples);
 
 	int ret = parse_function(function);
 	if (ret)
