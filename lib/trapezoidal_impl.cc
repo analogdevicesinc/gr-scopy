@@ -68,24 +68,36 @@ namespace gr {
 	double holdhigh_as_phase;
 	double fall_as_phase;
 	double sum;
+	double temp_phase;
 	float t;
 
 	sum = d_rise + d_fall + d_holdhigh + d_holdlow;
 	rise_as_phase = ((d_rise  / sum)* 2*M_PI);
 	holdhigh_as_phase = (((d_rise+d_holdhigh)/sum * 2*M_PI));
 	fall_as_phase = (((d_rise+d_holdhigh+d_fall)/sum)* 2*M_PI);
+	temp_phase = fall_as_phase - holdhigh_as_phase;
+
 	for(int i=0;i<noutput_items;i++) {
-		double osc_phase = (d_nco.get_phase()+M_PI);
-	  if (osc_phase < rise_as_phase)
+		double nco_phase = d_nco.get_phase();
+		double osc_phase = (nco_phase+M_PI);
+		if(osc_phase >= 2*M_PI)
+			osc_phase = osc_phase - 2*M_PI;
+	  if (osc_phase < rise_as_phase && rise_as_phase != 0)
+	  {
 	    t = (1*(osc_phase/rise_as_phase)*2*d_ampl - d_ampl);
+	  }
 	  else if(osc_phase < holdhigh_as_phase)
+	  {
 	     t = 1*d_ampl;
-	  else if(osc_phase < fall_as_phase) {
-	     double phase = fall_as_phase - holdhigh_as_phase;
+	  }
+	  else if(osc_phase < fall_as_phase && temp_phase != 0) {
 	     double rel_phase = osc_phase - holdhigh_as_phase;
-	     t = (-1*(rel_phase/phase)*2*d_ampl + d_ampl); }
+	     t = (-1*(rel_phase/temp_phase)*2*d_ampl + d_ampl); 
+	  }
 	  else
+	  {
 	     t = -1*d_ampl;
+	  }
 
 	out[i] = t + d_offset;
 	d_nco.step();
