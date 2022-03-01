@@ -24,6 +24,7 @@
 
 #include <gnuradio/io_signature.h>
 #include "trapezoidal_impl.h"
+#include <gnuradio/math.h>
 
 namespace gr {
   namespace scopy {
@@ -44,7 +45,7 @@ namespace gr {
               gr::io_signature::make(1,1, sizeof(float))), d_sampling_freq(sampling_freq),
       		d_frequency(wave_freq), d_ampl(ampl), d_offset(offset), d_phase(phase), d_rise(rise), d_fall(fall), d_holdhigh(holdhigh), d_holdlow(holdlow)
         {
-	 d_nco.set_freq (2 * M_PI * d_frequency / d_sampling_freq);
+	 d_nco.set_freq (2 * GR_M_PI * d_frequency / d_sampling_freq);
 	 d_nco.set_phase(d_phase);
 	}	
 
@@ -72,16 +73,16 @@ namespace gr {
 	float t;
 
 	sum = d_rise + d_fall + d_holdhigh + d_holdlow;
-	rise_as_phase = ((d_rise  / sum)* 2*M_PI);
-	holdhigh_as_phase = (((d_rise+d_holdhigh)/sum * 2*M_PI));
-	fall_as_phase = (((d_rise+d_holdhigh+d_fall)/sum)* 2*M_PI);
+	rise_as_phase = ((d_rise  / sum)* 2*GR_M_PI);
+	holdhigh_as_phase = (((d_rise+d_holdhigh)/sum * 2*GR_M_PI));
+	fall_as_phase = (((d_rise+d_holdhigh+d_fall)/sum)* 2*GR_M_PI);
 	temp_phase = fall_as_phase - holdhigh_as_phase;
 
 	for(int i=0;i<noutput_items;i++) {
 		double nco_phase = d_nco.get_phase();
-		double osc_phase = (nco_phase+M_PI);
-		if(osc_phase >= 2*M_PI)
-			osc_phase = osc_phase - 2*M_PI;
+		double osc_phase = (nco_phase+GR_M_PI);
+		if(osc_phase >= 2*GR_M_PI)
+			osc_phase = osc_phase - 2*GR_M_PI;
 	  if (osc_phase < rise_as_phase && rise_as_phase != 0)
 	  {
 	    t = (1*(osc_phase/rise_as_phase)*2*d_ampl - d_ampl);

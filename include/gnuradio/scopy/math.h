@@ -23,7 +23,7 @@
 #ifndef INCLUDED_SCOPY_MATH_H
 #define INCLUDED_SCOPY_MATH_H
 
-#include <scopy/api.h>
+#include <gnuradio/scopy/api.h>
 #include <gnuradio/hier_block2.h>
 
 namespace gr {
@@ -31,7 +31,7 @@ namespace gr {
 		class SCOPY_API iio_math : virtual public gr::hier_block2
 		{
 		public:
-			typedef boost::shared_ptr<iio_math> sptr;
+			typedef std::shared_ptr<iio_math> sptr;
 
 			static sptr make(const std::string &function,
 					int ninputs = 1);
@@ -40,7 +40,7 @@ namespace gr {
 		class SCOPY_API iio_math_gen : virtual public gr::hier_block2
 		{
 		public:
-			typedef boost::shared_ptr<iio_math_gen> sptr;
+			typedef std::shared_ptr<iio_math_gen> sptr;
 
 			static sptr make(double sampling_freq,
 					const std::string &function,

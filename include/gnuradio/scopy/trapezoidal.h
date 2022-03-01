@@ -22,7 +22,7 @@
 #ifndef INCLUDED_SCOPY_TRAPEZOIDAL_H
 #define INCLUDED_SCOPY_TRAPEZOIDAL_H
 
-#include <scopy/api.h>
+#include <gnuradio/scopy/api.h>
 #include <gnuradio/sync_block.h>
 
 namespace gr {
@@ -36,7 +36,7 @@ namespace gr {
     class SCOPY_API trapezoidal : virtual public gr::sync_block
     {
      public:
-      typedef boost::shared_ptr<trapezoidal> sptr;
+      typedef std::shared_ptr<trapezoidal> sptr;
 
       /*!
        * \brief Return a shared_ptr to a new instance of scopy::trapezoidal.

@@ -678,7 +678,7 @@
 #ifndef INCLUDED_SCOPY_GOERTZEL_SCOPY_FC_IMPL_H
 #define INCLUDED_SCOPY_GOERTZEL_SCOPY_FC_IMPL_H
 
-#include <scopy/goertzel_scopy_fc.h>
+#include <gnuradio/scopy/goertzel_scopy_fc.h>
 
 namespace gr {
   namespace scopy {

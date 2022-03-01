@@ -678,8 +678,8 @@
 #ifndef INCLUDED_SCOPY_GOERTZEL_SCOPY_FC_H
 #define INCLUDED_SCOPY_GOERTZEL_SCOPY_FC_H
 
-#include <scopy/api.h>
-#include <scopy/goertzel_scopy.h>
+#include <gnuradio/scopy/api.h>
+#include <gnuradio/scopy/goertzel_scopy.h>
 #include <gnuradio/sync_decimator.h>
 
 namespace gr {
@@ -694,7 +694,7 @@ class SCOPY_API goertzel_scopy_fc : virtual public sync_decimator
 public:
 
   // gr::fft::goertzel_scopy_fc::sptr
-  typedef boost::shared_ptr<goertzel_scopy_fc> sptr;
+  typedef std::shared_ptr<goertzel_scopy_fc> sptr;
 
   static sptr make(int rate, int len, float freq);
 

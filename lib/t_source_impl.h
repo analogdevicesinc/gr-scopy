@@ -678,7 +678,7 @@
 #ifndef INCLUDED_SCOPY_T_SOURCE_IMPL_H
 #define INCLUDED_SCOPY_T_SOURCE_IMPL_H
 
-#include <scopy/t_source.h>
+#include <gnuradio/scopy/t_source.h>
 
 namespace gr {
   namespace scopy {

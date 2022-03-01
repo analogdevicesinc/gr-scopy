@@ -25,8 +25,6 @@
 
 #include "iio_math_impl.h"
 
-#include <boost/lexical_cast.hpp>
-
 #include <gnuradio/analog/sig_source.h>
 #include <gnuradio/analog/sig_source_waveform.h>
 #include <gnuradio/blocks/add_blk.h>
@@ -37,8 +35,8 @@
 #include <gnuradio/blocks/null_sink.h>
 #include <gnuradio/blocks/sub.h>
 #include <gnuradio/blocks/transcendental.h>
-#include <scopy/modulo_ff.h>
-#include <scopy/power_ff.h>
+#include <gnuradio/scopy/modulo_ff.h>
+#include <gnuradio/scopy/power_ff.h>
 #include <gnuradio/io_signature.h>
 
 using namespace gr;

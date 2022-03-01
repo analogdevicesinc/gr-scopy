@@ -1,7 +1,7 @@
 #ifndef INCLUDED_SCOPY_IMPL_GOERTZEL_H
 #define INCLUDED_SCOPY_IMPL_GOERTZEL_H
 
-#include <scopy/api.h>
+#include <gnuradio/scopy/api.h>
 #include <gnuradio/types.h>
 
 namespace gr {

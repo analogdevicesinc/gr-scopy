@@ -20,23 +20,23 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_GR_SCOPY_MODULO_FF_H
-#define INCLUDED_GR_SCOPY_MODULO_FF_H
+#ifndef INCLUDED_GR_SCOPY_MODULO_CONST_FF_H
+#define INCLUDED_GR_SCOPY_MODULO_CONST_FF_H
 
-#include <scopy/api.h>
+#include <gnuradio/scopy/api.h>
 #include <gnuradio/sync_block.h>
 
 namespace gr {
 	namespace scopy {
-		class SCOPY_API modulo_ff : virtual public sync_block
+		class SCOPY_API modulo_const_ff : virtual public sync_block
 		{
 		public:
-			typedef boost::shared_ptr<modulo_ff> sptr;
+			typedef std::shared_ptr<modulo_const_ff> sptr;
 
-			static sptr make(size_t vlen=1);
+			static sptr make(float modulo, size_t vlen=1);
 		};
 
 	}
 }
 
-#endif /* INCLUDED_GR_SCOPY_MODULO_FF_H */
+#endif /* INCLUDED_GR_SCOPY_MODULO_CONST_FF_H */

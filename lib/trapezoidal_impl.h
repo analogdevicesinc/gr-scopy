@@ -21,7 +21,7 @@
 #ifndef INCLUDED_SCOPY_TRAPEZOIDAL_IMPL_H
 #define INCLUDED_SCOPY_TRAPEZOIDAL_IMPL_H
 
-#include <scopy/trapezoidal.h>
+#include <gnuradio/scopy/trapezoidal.h>
 #include <gnuradio/fxpt_nco.h>
 namespace gr {
   namespace scopy {

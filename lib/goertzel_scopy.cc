@@ -24,7 +24,7 @@
 #include <config.h>
 #endif
 
-#include <scopy/goertzel_scopy.h>
+#include <gnuradio/scopy/goertzel_scopy.h>
 #include <gnuradio/math.h>
 #include <cmath>
 

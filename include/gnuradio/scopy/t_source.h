@@ -678,7 +678,7 @@
 #ifndef INCLUDED_SCOPY_T_SOURCE_H
 #define INCLUDED_SCOPY_T_SOURCE_H
 
-#include <scopy/api.h>
+#include <gnuradio/scopy/api.h>
 #include <gnuradio/sync_block.h>
 
 namespace gr {
@@ -692,7 +692,7 @@ namespace gr {
     class SCOPY_API t_source : virtual public gr::sync_block
     {
      public:
-      typedef boost::shared_ptr<t_source> sptr;
+      typedef std::shared_ptr<t_source> sptr;
 
       /*!
        * \brief Return a shared_ptr to a new instance of scopy::t_source.
