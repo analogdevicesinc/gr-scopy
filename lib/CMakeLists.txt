@@ -41,7 +41,12 @@ if(NOT scopy_sources)
 endif(NOT scopy_sources)
 
 add_library(gnuradio-scopy SHARED ${scopy_sources})
-target_link_libraries(gnuradio-scopy gnuradio::gnuradio-runtime)
+target_link_libraries(gnuradio-scopy 
+            gnuradio::gnuradio-runtime
+            gnuradio::gnuradio-analog
+            gnuradio::gnuradio-filter
+            gnuradio::gnuradio-fft
+            )
 target_include_directories(gnuradio-scopy
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}> # for flex/bison includes
